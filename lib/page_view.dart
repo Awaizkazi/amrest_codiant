@@ -10,10 +10,16 @@ class PageView2 extends StatefulWidget {
 
 class _PageView2State extends State<PageView2> {
   final _controller = PageController();
+  bool onLastPage = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        onPageChanged: (index) {
+          setState(() {
+            onLastPage = (index == 2);
+          });
+        },
         controller: _controller,
         children: [
           Screen1(),
@@ -34,21 +40,24 @@ class Screen1 extends StatefulWidget {
 }
 
 class _Screen1State extends State<Screen1> {
+  PageController _controller = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          child: ListView(
-        children: [
-          Image.asset('assets/logo.jpeg'),
-          Center(
-            child: Text(
-              'Explore your Activity',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        child: ListView(
+          children: [
+            Image.asset('assets/logo.jpeg'),
+            Center(
+              child: Text(
+                'Explore your Activities',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }
