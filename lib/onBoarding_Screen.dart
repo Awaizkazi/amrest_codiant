@@ -53,10 +53,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                 // Next
                 GestureDetector(
                  onTap: () {
-                   Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const LoginScreen()),
-  );
+                   Navigator.push(context,MaterialPageRoute(builder: (context) => const LoginScreen()),);
                  },
                   child: Text(
                     'Next',
