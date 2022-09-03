@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:amrest_codiant/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -51,11 +52,12 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                 SmoothPageIndicator(controller: _controller, count: 3),
                 // Next
                 GestureDetector(
-                  onTap: (() {
-                    _controller.nextPage(
-                        duration: Duration(microseconds: 300),
-                        curve: Curves.easeIn);
-                  }),
+                 onTap: () {
+                   Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const LoginScreen()),
+  );
+                 },
                   child: Text(
                     'Next',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
