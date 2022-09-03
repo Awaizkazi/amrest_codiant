@@ -10,8 +10,8 @@ class IntroductionScreen extends StatefulWidget {
 }
 
 class _IntroductionScreenState extends State<IntroductionScreen> {
-  // Controller to keep track of Which page
-  final _controller = PageController();
+  // Controller to keep track of Which page we're on
+  PageController _controller = PageController();
   bool onLastPage = false;
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,37 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             ],
           ),
           // Dot Indicator
-          SmoothPageIndicator(controller: _controller, count: 3)
+          Container(
+            alignment: Alignment(0.0, 0.90),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                // SKip
+                GestureDetector(
+                  onTap: (() {
+                    _controller.jumpToPage(2);
+                  }),
+                  child: Text(
+                    'Skip',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                ),
+                SmoothPageIndicator(controller: _controller, count: 3),
+                // Next
+                GestureDetector(
+                  onTap: (() {
+                    _controller.nextPage(
+                        duration: Duration(microseconds: 300),
+                        curve: Curves.easeIn);
+                  }),
+                  child: Text(
+                    'Next',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -60,7 +90,7 @@ class _Screen1State extends State<Screen1> {
             Image.asset('assets/logo.jpeg'),
             Center(
               child: Text(
-                'Explore your Activitis',
+                'Explore your Activity',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
@@ -82,7 +112,20 @@ class _Screen2State extends State<Screen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow,
+      // backgroundColor: Colors.yellow,
+      body: Container(
+        child: ListView(
+          children: [
+            Image.asset('assets/logo.jpeg'),
+            Center(
+              child: Text(
+                'Explore your Activity',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -99,7 +142,20 @@ class _Screen3State extends State<Screen3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      // backgroundColor: Colors.green,
+      body: Container(
+        child: ListView(
+          children: [
+            Image.asset('assets/logo.jpeg'),
+            Center(
+              child: Text(
+                'Explore your Activity',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
