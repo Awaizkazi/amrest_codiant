@@ -1,30 +1,39 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class PageView2 extends StatefulWidget {
-  const PageView2({super.key});
+class IntroductionScreen extends StatefulWidget {
+  const IntroductionScreen({super.key});
 
   @override
-  State<PageView2> createState() => _PageView2State();
+  State<IntroductionScreen> createState() => _IntroductionScreenState();
 }
 
-class _PageView2State extends State<PageView2> {
+class _IntroductionScreenState extends State<IntroductionScreen> {
+  // Controller to keep track of Which page
   final _controller = PageController();
   bool onLastPage = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        onPageChanged: (index) {
-          setState(() {
-            onLastPage = (index == 2);
-          });
-        },
-        controller: _controller,
+      body: Stack(
         children: [
-          Screen1(),
-          Screen2(),
-          Screen3(),
+          // Page Views
+          PageView(
+            onPageChanged: (index) {
+              setState(() {
+                onLastPage = (index == 2);
+              });
+            },
+            controller: _controller,
+            children: [
+              Screen1(),
+              Screen2(),
+              Screen3(),
+            ],
+          ),
+          // Dot Indicator
+          SmoothPageIndicator(controller: _controller, count: 3)
         ],
       ),
     );
@@ -51,7 +60,7 @@ class _Screen1State extends State<Screen1> {
             Image.asset('assets/logo.jpeg'),
             Center(
               child: Text(
-                'Explore your Activities',
+                'Explore your Activitis',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),

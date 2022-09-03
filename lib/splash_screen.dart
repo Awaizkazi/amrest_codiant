@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
 import 'dart:async';
-import 'package:amrest_codiant/page_view.dart';
+import 'package:amrest_codiant/onBoarding_Screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       (() {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (_) => PageView2(),
+            builder: (_) => IntroductionScreen(),
           ),
         );
       }),
